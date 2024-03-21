@@ -1,8 +1,26 @@
 #include <SFML/Graphics.hpp>
+#include "./lib/Player.hpp"
+#include <string>
 
 int main() {
+    Player *p1 = new Player();
+    p1->setBackPack("pouet", 28);
+	int quant = p1->getItemQuantiy("pouet");
     sf::RenderWindow window(sf::VideoMode(800, 600), "Dessiner des Formes");
 
+    sf::Font font;
+    if (!font.loadFromFile("./font/digital-7.ttf")) {
+        std::cout << "Error loading font!" << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    string str= "Hello SFML = " + std::to_string(quant);
+    sf::Text text;
+    text.setFont(font);
+    text.setString(str);
+    text.setCharacterSize(50);
+    text.setPosition(100, 100);
+    text.setFillColor(sf::Color::Red);
     // Crée un cercle
     sf::CircleShape circle(50);
     circle.setFillColor(sf::Color::Green);
@@ -23,6 +41,7 @@ int main() {
         window.clear();
         window.draw(circle);
         window.draw(rectangle);
+        window.draw(text);
         window.display();
     }
 
