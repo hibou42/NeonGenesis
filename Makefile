@@ -10,10 +10,22 @@ SRC				=	main.cpp \
 					srcs/Player.cpp 
 					#srcs/Farm.cpp \
 					#srcs/Forge.cpp \
-					#srcs/House.cpp
+					#srcs/House.cpp \
+
+
+DISPLAY_SRC		=	srcs/display/SceneBase.cpp \
+					srcs/display/SFMLManager.cpp \
+					srcs/display/SceneStart.cpp
+
+
+
+
+SRCS			=	${SRC} ${DISPLAY_SRC}
 
 OBJ_DIR			= obj
-OBJS			= $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
+OBJS			= $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
+
+SANITIZER		= -fsanitize=address -fno-omit-frame-pointer -Wno-format-security
 
 #***** SFML *****#
 #Windows by default
@@ -46,7 +58,7 @@ BS_N_TXT		=	echo "\n"
 
 #***** Message compilation *****#
 
-TOTAL_FILES		=	$(words $(SRC))
+TOTAL_FILES		=	$(words $(SRCS))
 COMPILED_FILE	=	0
 MESSAGE			=	"Compilation en cours : $(COMPILED_FILES)/$(TOTAL_FILES) ($(shell expr $(COMPILED_FILES) \* 100 / $(TOTAL_FILES))%)"
 
@@ -87,6 +99,17 @@ $(NAME) :	${OBJS}
 		@$(END_COMP_TXT)
 		@tput setaf 2; cat ascii_art/small_hibou1; tput setaf default
 
+
+l: 		${OBJS}
+		@$(BS_N_TXT)
+		@${CXX} ${CXXFLAGS} ${OBJS} -o ${NAME} ${SFML_FLAG} ${SANITIZER} -Wl,-rpath,$(SFML_LIB)/lib
+		@$(END_COMP_TXT)
+		@tput setaf 2; cat ascii_art/small_hibou2; tput setaf default
+
+
+t:		${OBJS}
+		@${CXX} ${CXXFLAGS} ${OBJS} -o ${NAME} ${SFML_FLAG} -Wl,-rpath,$(SFML_LIB)/lib
+
 #***** Clean *****#
 
 clean:
@@ -101,5 +124,7 @@ fclean:		clean
 		@$(END_TXT)
 
 re:		fclean all
+
+lre: 	fclean l
 
 .PHONY:	all clean fclean 
