@@ -5,7 +5,11 @@
 // #include "SceneGame.hpp"
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Game");
+
+	sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
+
+
+    sf::RenderWindow window(sf::VideoMode(desktopMode.width, desktopMode.height), "SFML Game", sf::Style::Fullscreen | sf::Style::None);
     window.setFramerateLimit(60);
 
     SFMLManager sceneManager;
