@@ -25,6 +25,15 @@ MATERIAL_SRC	=	srcs/material/AMaterial.cpp \
 
 SRCS			=	${SRC} ${DISPLAY_SRC} ${MATERIAL_SRC}
 
+					srcs/display/SceneGame.cpp\
+					srcs/display/SceneMenu.cpp
+
+
+INCLUDE_DIRS = -I./lib -I./lib/display -I./font
+
+SRCS			=	${SRC} ${DISPLAY_SRC}
+
+
 OBJ_DIR			= obj
 OBJS			= $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 
@@ -68,7 +77,7 @@ MESSAGE			=	"Compilation en cours : $(COMPILED_FILES)/$(TOTAL_FILES) ($(shell ex
 #***** Flags *****#
 
 CXX				=	c++
-CXXFLAGS		=	-Wall -g -I$(SFML_LIB)/include
+CXXFLAGS		=	-Wall -g -I$(SFML_LIB)/include ${INCLUDE_DIRS}
 #CXXFLAGS		+=	-Wextra -Werror -std=c++11 -g
 RM				=	rm -f
 
@@ -108,9 +117,6 @@ l: 		${OBJS}
 		@$(END_COMP_TXT)
 		@tput setaf 2; cat ascii_art/small_hibou2; tput setaf default
 
-
-t:		${OBJS}
-		@${CXX} ${CXXFLAGS} ${OBJS} -o ${NAME} ${SFML_FLAG} -Wl,-rpath,$(SFML_LIB)/lib
 
 #***** Clean *****#
 
