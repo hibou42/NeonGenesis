@@ -1,6 +1,10 @@
 #include <SFML/Graphics.hpp>
 #include "lib/display/SFMLManager.hpp"
 #include "lib/display/SceneStart.hpp"
+#include "lib/material/Wood.hpp"
+
+#include <iostream>
+
 // #include "lib/display/SceneBase.hpp"
 // #include "SceneGame.hpp"
 

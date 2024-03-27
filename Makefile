@@ -5,23 +5,25 @@ NAME			= NeonGenesis
 #***** Sources / Objs *****#
 
 SRC				=	main.cpp \
-					srcs/Weapon.cpp \
-					srcs/Resource.cpp \
-					srcs/Player.cpp 
-					#srcs/Farm.cpp \
+					srcs/Player.cpp \
+					srcs/Weapon.cpp
 					#srcs/Forge.cpp \
 					#srcs/House.cpp \
-
 
 DISPLAY_SRC		=	srcs/display/SceneBase.cpp \
 					srcs/display/SFMLManager.cpp \
 					srcs/display/SceneStart.cpp \
 					srcs/display/SceneGame.cpp
 
+MATERIAL_SRC	=	srcs/material/AMaterial.cpp \
+					srcs/material/Wood.cpp \
+					srcs/material/Farm.cpp \
+					srcs/material/Water.cpp \
+					srcs/material/Leather.cpp \
+					srcs/material/Metal.cpp
 
 
-
-SRCS			=	${SRC} ${DISPLAY_SRC}
+SRCS			=	${SRC} ${DISPLAY_SRC} ${MATERIAL_SRC}
 
 OBJ_DIR			= obj
 OBJS			= $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
@@ -69,7 +71,6 @@ CXX				=	c++
 CXXFLAGS		=	-Wall -g -I$(SFML_LIB)/include
 #CXXFLAGS		+=	-Wextra -Werror -std=c++11 -g
 RM				=	rm -f
-
 
 #***** Compilation *****#
 

@@ -1,4 +1,4 @@
-#include "../lib/Resource.hpp"
+#include "../../lib/material/Leather.hpp"
 
 // ============================================================================|
 // Interaction fonctions
@@ -8,29 +8,18 @@
 // Getters & Setters
 // ============================================================================|
 
-int	Resource::getResDiff(const string &str) const {
-	return (this->_mapResDiff.at(str));
-}
-
-const void Resource::setResDiff(const string str, int i) {
-	this->_mapResDiff[str] = i;
-}
-
-map<string, int> Resource::getMapResDiff() const {
-	return (this->_mapResDiff);
-}
-
 // ============================================================================|
 // Construction, destruction & overload
 // ============================================================================|
 
-Resource::Resource() {
-	this->_mapResDiff["wood"] = 1;
-	this->_mapResDiff["water"] = 2;
-	this->_mapResDiff["leather"] = 3;
-	this->_mapResDiff["iron"] = 5;
+Leather::Leather() {
+	this->_difficulty = 4;
+	this->_type = "Leather";
+	this->_gens_p1 = 0;
+	this->_gens_p2 = 0;
+	this->_upgrade_type = "scissors";
+	this->_upgrade_p1 = 0;
+	this->_upgrade_p2 = 0;
 }
 
-Resource::~Resource() {
-
-}
+Leather::~Leather() {}
