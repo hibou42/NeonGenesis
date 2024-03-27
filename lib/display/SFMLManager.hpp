@@ -14,7 +14,12 @@ private:
 	// SceneBase* currentScene = nullptr;
 	std::stack<std::unique_ptr<SceneBase>> scenes;
 public:
+	SFMLManager() {}
 
+	static SFMLManager& getInstance() {
+		static SFMLManager instance;
+		return instance;
+	}
 
 	void pushScene(std::unique_ptr<SceneBase> scene);
 	void popScene();

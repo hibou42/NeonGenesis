@@ -8,8 +8,8 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Game");
     window.setFramerateLimit(60);
 
-    // SFMLManager sceneManager;
-    // sceneManager.pushScene(std::make_unique<SceneStart>());
+    SFMLManager sceneManager;
+    sceneManager.pushScene(std::make_unique<SceneStart>(&sceneManager));
 
     while (window.isOpen()) {
         sf::Event event;
@@ -17,13 +17,13 @@ int main() {
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
-            // sceneManager.handleEvent(event);
+            sceneManager.handleEvent(event);
         }
 
-        // sceneManager.onUpdate(0.016f); // deltaTime fixe pour 60 FPS
+        sceneManager.onUpdate(0.016f); // deltaTime fixe pour 60 FPS
 
         window.clear();
-        // sceneManager.onDraw(window);
+        sceneManager.onDraw(window);
         window.display();
     }
 

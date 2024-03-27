@@ -2,7 +2,6 @@
 # define SCENEBASE_HPP
 
 #include <SFML/Graphics.hpp>
-// #include "SceneStart.hpp"
 
 class SceneBase{
 	protected:
@@ -16,7 +15,5 @@ class SceneBase{
 		virtual void onDraw(sf::RenderWindow& window) = 0;
 
 };
-
-// #include "SceneStart.hpp"
 
 #endif

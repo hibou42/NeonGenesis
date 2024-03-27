@@ -15,7 +15,8 @@ SRC				=	main.cpp \
 
 DISPLAY_SRC		=	srcs/display/SceneBase.cpp \
 					srcs/display/SFMLManager.cpp \
-					srcs/display/SceneStart.cpp
+					srcs/display/SceneStart.cpp \
+					srcs/display/SceneGame.cpp
 
 
 

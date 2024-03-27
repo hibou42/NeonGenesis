@@ -3,13 +3,17 @@
 #include "../../lib/display/SceneGame.hpp"
 #include <iostream>
 
-SceneGame::SceneGame() {
+SceneGame::SceneGame() : sfmlManager(nullptr) {}
+
+SceneGame::SceneGame(SFMLManager* manager) : sfmlManager(manager) {
     // Initialisation des formes et du texte ici
 
     this->_text = sf::Text();
     this->_circle = sf::CircleShape();
     this->_rect = sf::RectangleShape();
 }
+
+SceneGame::~SceneGame() {}
 
 void SceneGame::handleEvent(const sf::Event& event) {
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::E) {

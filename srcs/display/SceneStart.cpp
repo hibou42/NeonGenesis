@@ -2,17 +2,26 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-SceneStart::SceneStart(){
-    // Initialisation des formes et du texte ici
+
+SceneStart::SceneStart() : sfmlManager(nullptr){}
+
+SceneStart::SceneStart(SFMLManager* manager) : sfmlManager(manager){
+
     this->_text = sf::Text("Start the game by pressing E", sf::Font(), 50);
     this->_circle = sf::CircleShape(50);
     this->_rect = sf::RectangleShape(sf::Vector2f(100, 100));
 }
 
+SceneStart::~SceneStart() {}
+
 void SceneStart::handleEvent(const sf::Event& event) {
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::E) {
-        // Transition vers la prochaine scène (exemple: SceneGame)
-        // sfmlManager->pushScene(std::make_unique<SceneGame>());
+
+		std::cout << "E pressed" << std::endl;
+		if (sfmlManager != nullptr)
+        	sfmlManager->pushScene(std::make_unique<SceneGame>(sfmlManager));
+		else
+			std::cout << "sfmlManager is null" << std::endl;
     }
 }
 
