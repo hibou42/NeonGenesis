@@ -1,4 +1,4 @@
-#include "../../lib/display/SceneBase.hpp"
+#include "SceneBase.hpp"
 
 SceneBase::SceneBase() {}
 SceneBase::~SceneBase() {}

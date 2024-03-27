@@ -1,4 +1,4 @@
-#include "../../lib/display/SceneStart.hpp"
+#include "SceneStart.hpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 

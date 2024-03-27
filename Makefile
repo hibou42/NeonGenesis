@@ -13,7 +13,8 @@ SRC				=	main.cpp \
 DISPLAY_SRC		=	srcs/display/SceneBase.cpp \
 					srcs/display/SFMLManager.cpp \
 					srcs/display/SceneStart.cpp \
-					srcs/display/SceneGame.cpp
+					srcs/display/SceneGame.cpp \
+					srcs/display/SceneMenu.cpp
 
 MATERIAL_SRC	=	srcs/material/AMaterial.cpp \
 					srcs/material/Wood.cpp \
@@ -25,14 +26,8 @@ MATERIAL_SRC	=	srcs/material/AMaterial.cpp \
 
 SRCS			=	${SRC} ${DISPLAY_SRC} ${MATERIAL_SRC}
 
-					srcs/display/SceneGame.cpp\
-					srcs/display/SceneMenu.cpp
-
 
 INCLUDE_DIRS = -I./lib -I./lib/display -I./font
-
-SRCS			=	${SRC} ${DISPLAY_SRC}
-
 
 OBJ_DIR			= obj
 OBJS			= $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))

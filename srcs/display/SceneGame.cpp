@@ -1,6 +1,5 @@
-
-#include "../../lib/display/SceneStart.hpp"
-#include "../../lib/display/SceneGame.hpp"
+#include "SceneStart.hpp"
+#include "SceneGame.hpp"
 #include <iostream>
 
 SceneGame::SceneGame() : sfmlManager(nullptr) {}
