@@ -23,7 +23,7 @@ void SceneStart::handleEvent(const sf::Event& event) {
 		std::cout << "E pressed" << std::endl;
 		if (sfmlManager != nullptr){
 
-        	// sfmlManager->pushScene(std::make_unique<SceneMenu>(sfmlManager));
+        	sfmlManager->pushScene(std::make_unique<SceneMenu>(sfmlManager));
 
 		}
 		else

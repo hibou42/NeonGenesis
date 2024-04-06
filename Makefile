@@ -10,11 +10,13 @@ SRC				=	main.cpp \
 					#srcs/Forge.cpp \
 					#srcs/House.cpp \
 
-DISPLAY_SRC		=	srcs/display/SceneBase.cpp \
-					srcs/display/SFMLManager.cpp \
-					srcs/display/SceneStart.cpp \
-					srcs/display/SceneMenu.cpp \
-					srcs/display/SceneGame.cpp
+DISPLAY_SRC		=	srcs/display/SFMLManager.cpp \
+					srcs/display/ResourceManager.cpp \
+					srcs/display/scenes/SceneBase.cpp \
+					srcs/display/scenes/SceneGame.cpp \
+					srcs/display/scenes/SceneMenu.cpp \
+					srcs/display/scenes/SceneMenuSettings.cpp \
+					srcs/display/scenes/SceneStart.cpp
 
 MATERIAL_SRC	=	srcs/material/AMaterial.cpp \
 					srcs/material/Wood.cpp \
