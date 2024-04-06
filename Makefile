@@ -23,10 +23,11 @@ MATERIAL_SRC	=	srcs/material/AMaterial.cpp \
 					srcs/material/Leather.cpp \
 					srcs/material/Metal.cpp
 
+GAMEPLAY_SRC	=	srcs/gameplay/AGameplay.cpp \
+					srcs/gameplay/Easy.cpp
 
-SRCS			=	${SRC} ${DISPLAY_SRC} ${MATERIAL_SRC}
 
-
+SRCS			=	${SRC} ${DISPLAY_SRC} ${MATERIAL_SRC} ${GAMEPLAY_SRC}
 
 INCLUDE_DIRS = -I./lib -I./lib/display -I./lib/display/display_settings -I./lib/display/scenes -I./lib/material -I./font -I./nlohmann
 
