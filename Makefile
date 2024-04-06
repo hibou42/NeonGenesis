@@ -10,11 +10,13 @@ SRC				=	main.cpp \
 					#srcs/Forge.cpp \
 					#srcs/House.cpp \
 
-DISPLAY_SRC		=	srcs/display/SceneBase.cpp \
-					srcs/display/SFMLManager.cpp \
-					srcs/display/SceneStart.cpp \
-					srcs/display/SceneGame.cpp \
-					srcs/display/SceneMenu.cpp
+DISPLAY_SRC		=	srcs/display/SFMLManager.cpp \
+					srcs/display/ResourceManager.cpp \
+					srcs/display/scenes/SceneStart.cpp \
+					srcs/display/scenes/SceneBase.cpp \
+					# srcs/display/scenes/SceneGame.cpp \
+					# srcs/display/scenes/SceneMenu.cpp \
+					# srcs/display/scenes/SceneMenuSettings.cpp
 
 MATERIAL_SRC	=	srcs/material/AMaterial.cpp \
 					srcs/material/Wood.cpp \
@@ -27,12 +29,13 @@ MATERIAL_SRC	=	srcs/material/AMaterial.cpp \
 SRCS			=	${SRC} ${DISPLAY_SRC} ${MATERIAL_SRC}
 
 
-INCLUDE_DIRS = -I./lib -I./lib/display -I./font
+INCLUDE_DIRS = -I./lib -I./lib/display -I./lib/display/display_settings -I./lib/display/scenes -I./lib/material -I./font -I./nlohmann
 
 OBJ_DIR			= obj
 OBJS			= $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 
 SANITIZER		= -fsanitize=address -fno-omit-frame-pointer -Wno-format-security
+VALGRIND		= valgrind --leak-check=full  --track-origins=yes --log-file=valgrind.txt
 
 #***** SFML *****#
 #Windows by default
@@ -112,6 +115,13 @@ l: 		${OBJS}
 		@$(END_COMP_TXT)
 		@tput setaf 2; cat ascii_art/small_hibou2; tput setaf default
 
+v:	 	${OBJS}
+		@$(BS_N_TXT)
+		@${CXX} ${CXXFLAGS} ${OBJS} -o ${NAME} ${SFML_FLAG} -Wl,-rpath,$(SFML_LIB)/lib
+		@$(VALGRIND) ./$(NAME)
+		@$(END_COMP_TXT)
+		@tput setaf 2; cat ascii_art/small_hibou3; tput setaf default
+
 
 #***** Clean *****#
 
@@ -129,5 +139,7 @@ fclean:		clean
 re:		fclean all
 
 lre: 	fclean l
+
+vre: 	fclean v
 
 .PHONY:	all clean fclean 

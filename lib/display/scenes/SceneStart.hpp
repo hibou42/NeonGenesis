@@ -3,9 +3,10 @@
 
 #include "SceneBase.hpp"
 #include "SFMLManager.hpp"
-#include "SceneGame.hpp"
+#include "SceneMenu.hpp"
 #include <SFML/Graphics.hpp>
-// #include <iostream>
+#include <iostream>
+#include "ResourceManager.hpp"
 
 class SceneStart : public SceneBase {
 	private:
