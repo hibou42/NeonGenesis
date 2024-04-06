@@ -1,6 +1,5 @@
-
-#include "../../lib/display/SceneStart.hpp"
-#include "../../lib/display/SceneGame.hpp"
+#include "SceneStart.hpp"
+#include "SceneGame.hpp"
 #include <iostream>
 
 SceneGame::SceneGame() : sfmlManager(nullptr) {}
@@ -53,7 +52,6 @@ void SceneGame::onDraw(sf::RenderWindow& window) {
     this->_rect.setPosition(400, 300);
 	this->_rect.setSize(sf::Vector2f(100, 100));
 
-	std::cout << "Drawing shapes and text..." << std::endl;
     // Dessiner les formes et le texte ici
     window.draw(_circle);
     window.draw(_rect);

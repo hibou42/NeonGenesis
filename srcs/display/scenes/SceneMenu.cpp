@@ -1,3 +1,4 @@
+#include "SceneMenuSettings.hpp"
 #include "SceneMenu.hpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -7,7 +8,7 @@ SceneMenu::SceneMenu() : sfmlManager(nullptr){}
 
 SceneMenu::SceneMenu(SFMLManager* manager) : sfmlManager(manager){
 
-    this->_text = sf::Text("Start the game by pressing E", sf::Font(), 50);
+    this->_text = sf::Text("Scene Menu", sf::Font(), 50);
     this->_circle = sf::CircleShape(50);
     this->_rect = sf::RectangleShape(sf::Vector2f(100, 100));
 }
@@ -18,16 +19,19 @@ void SceneMenu::handleEvent(const sf::Event& event) {
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::E) {
 
 		std::cout << "E pressed" << std::endl;
-		// if (sfmlManager != nullptr)
-        	// sfmlManager->pushScene(std::make_unique<SceneGame>(sfmlManager));
-		// else
-			// std::cout << "sfmlManager is null" << std::endl;
+		if (sfmlManager != nullptr){
+
+        	sfmlManager->pushScene(std::make_unique<SceneMenuSettings>(sfmlManager));
+			
+		}
+		else
+			std::cout << "sfmlManager is null" << std::endl;
     }
 }
 
 void SceneMenu::onUpdate(float deltaTime) {
     // Logique de mise à jour de la scène ici
-	std::cout << "deltaTime: " << deltaTime << std::endl;
+	// std::cout << "deltaTime 1: " << deltaTime << std::endl;
 }
 
 void SceneMenu::onDraw(sf::RenderWindow& window) {
@@ -39,7 +43,7 @@ void SceneMenu::onDraw(sf::RenderWindow& window) {
         return;
     }
 
-    std::string str = "Start the game by pressing E";
+    std::string str = "Scene Menu";
 
     this->_text.setFont(font);
     this->_text.setString(str);

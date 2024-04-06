@@ -1,6 +1,7 @@
-#include "../../lib/display/SFMLManager.hpp"
+#include "SFMLManager.hpp"
 
 void SFMLManager::pushScene(std::unique_ptr<SceneBase> scene) {
+
     scenes.push(std::move(scene));
 }
 

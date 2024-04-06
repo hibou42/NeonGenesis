@@ -28,15 +28,13 @@ SRCS			=	${SRC} ${DISPLAY_SRC} ${MATERIAL_SRC}
 
 
 
-INCLUDE_DIRS = -I./lib -I./lib/display -I./font
-
-SRCS			=	${SRC} ${DISPLAY_SRC}
-
+INCLUDE_DIRS = -I./lib -I./lib/display -I./lib/display/display_settings -I./lib/display/scenes -I./lib/material -I./font -I./nlohmann
 
 OBJ_DIR			= obj
 OBJS			= $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 
 SANITIZER		= -fsanitize=address -fno-omit-frame-pointer -Wno-format-security
+VALGRIND		= valgrind --leak-check=full  --track-origins=yes --log-file=valgrind.txt
 
 #***** SFML *****#
 #Windows by default
@@ -116,6 +114,13 @@ l: 		${OBJS}
 		@$(END_COMP_TXT)
 		@tput setaf 2; cat ascii_art/small_hibou2; tput setaf default
 
+v:	 	${OBJS}
+		@$(BS_N_TXT)
+		@${CXX} ${CXXFLAGS} ${OBJS} -o ${NAME} ${SFML_FLAG} -Wl,-rpath,$(SFML_LIB)/lib
+		@$(VALGRIND) ./$(NAME)
+		@$(END_COMP_TXT)
+		@tput setaf 2; cat ascii_art/small_hibou3; tput setaf default
+
 
 #***** Clean *****#
 
@@ -133,5 +138,7 @@ fclean:		clean
 re:		fclean all
 
 lre: 	fclean l
+
+vre: 	fclean v
 
 .PHONY:	all clean fclean 
