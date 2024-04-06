@@ -2,6 +2,7 @@
 # define EASY_HPP
 
 #include <string>
+#include "AGameplay.hpp"
 
 using namespace std;
 
