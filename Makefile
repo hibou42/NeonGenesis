@@ -13,6 +13,7 @@ SRC				=	main.cpp \
 DISPLAY_SRC		=	srcs/display/SceneBase.cpp \
 					srcs/display/SFMLManager.cpp \
 					srcs/display/SceneStart.cpp \
+					srcs/display/SceneMenu.cpp \
 					srcs/display/SceneGame.cpp
 
 MATERIAL_SRC	=	srcs/material/AMaterial.cpp \
@@ -25,8 +26,6 @@ MATERIAL_SRC	=	srcs/material/AMaterial.cpp \
 
 SRCS			=	${SRC} ${DISPLAY_SRC} ${MATERIAL_SRC}
 
-					srcs/display/SceneGame.cpp\
-					srcs/display/SceneMenu.cpp
 
 
 INCLUDE_DIRS = -I./lib -I./lib/display -I./font
