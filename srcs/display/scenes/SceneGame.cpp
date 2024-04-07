@@ -2,9 +2,9 @@
 #include "SceneGame.hpp"
 #include <iostream>
 
-SceneGame::SceneGame() : sfmlManager(nullptr) {}
+SceneGame::SceneGame() : sfmlManager(nullptr), _gameplay(*new Easy()) {}
 
-SceneGame::SceneGame(SFMLManager* manager) : sfmlManager(manager) {
+SceneGame::SceneGame(SFMLManager* manager) : sfmlManager(manager), _gameplay(*new Easy()) {
     // Initialisation des formes et du texte ici
 
     this->_text = sf::Text();
@@ -12,7 +12,10 @@ SceneGame::SceneGame(SFMLManager* manager) : sfmlManager(manager) {
     this->_rect = sf::RectangleShape();
 }
 
-SceneGame::~SceneGame() {}
+SceneGame::~SceneGame() {
+	std::cout << "SceneGame destroyed" << std::endl;
+	delete &_gameplay;
+}
 
 void SceneGame::handleEvent(const sf::Event& event) {
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::E) {

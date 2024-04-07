@@ -1,4 +1,5 @@
 #include "SceneMenuSettings.hpp"
+#include "SceneGame.hpp"
 #include "SceneMenu.hpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -21,8 +22,7 @@ void SceneMenu::handleEvent(const sf::Event& event) {
 		std::cout << "E pressed" << std::endl;
 		if (sfmlManager != nullptr){
 
-        	sfmlManager->pushScene(std::make_unique<SceneMenuSettings>(sfmlManager));
-			
+        	sfmlManager->pushScene(std::make_unique<SceneGame>(sfmlManager));
 		}
 		else
 			std::cout << "sfmlManager is null" << std::endl;

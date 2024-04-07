@@ -4,9 +4,12 @@
 #include "SceneBase.hpp"
 #include "SFMLManager.hpp"
 
+#include "../gameplay/Easy.hpp"
+
 class SceneGame : public SceneBase {
 	private:
-		 SFMLManager* sfmlManager;
+		SFMLManager* sfmlManager;
+		Easy &_gameplay;
 
 		sf::Text _text;
 		sf::CircleShape _circle;
@@ -15,7 +18,7 @@ class SceneGame : public SceneBase {
 	public:
 		SceneGame();
 		SceneGame(SFMLManager* manager);
-		virtual ~SceneGame();
+		~SceneGame();
 		void handleEvent(const sf::Event& event) override;
 		void onUpdate(float deltaTime) override;
 		void onDraw(sf::RenderWindow& window) override;
