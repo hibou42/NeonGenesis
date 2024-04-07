@@ -7,6 +7,7 @@
 
 
 int main() {
+	std::cout << "Let's start !" << std::endl;
 	DisplaySettings settings = DisplaySettings::loadSettingsFromJson("display_settings.json");
 	std::cout << "Width: " << settings.width << std::endl;
 	std::cout << "Height: " << settings.height << std::endl;
