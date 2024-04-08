@@ -18,10 +18,16 @@ SceneGame::~SceneGame() {
 }
 
 void SceneGame::handleEvent(const sf::Event& event) {
-    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::E) {
-        // Transition vers la prochaine scène (exemple: SceneGame)
-        // sfmlManager->pushScene(std::make_unique<SceneGame>());
-    }
+	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Q) {
+		std::cout << "nb gens p1 = "<<_gameplay._p1.getGens() << " " << std::endl;
+		_gameplay.goWood(_gameplay._p1, _gameplay._wood);
+		std::cout << "nb gens p1 = "<<_gameplay._p1.getGens() << " " << std::endl;
+	}
+	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::E) {
+		std::cout << "nb gens p1 = "<<_gameplay._p1.getGens() << " " << std::endl;
+		_gameplay.backWood(_gameplay._p1, _gameplay._wood);
+		std::cout << "nb gens p1 = "<<_gameplay._p1.getGens() << " " << std::endl;
+	}
 }
 
 void SceneGame::onUpdate(float deltaTime) {
@@ -37,11 +43,11 @@ void SceneGame::onDraw(sf::RenderWindow& window) {
 		return;
 	}
 
-	std::string str = "TEST GAME";
+	std::string str = "TEST GAME : Q = goWood, E = backWood";
 
 	this->_text.setFont(font);
     this->_text.setString(str);
-    this->_text.setCharacterSize(50);
+    this->_text.setCharacterSize(40);
     this->_text.setPosition(100, 100);
     this->_text.setFillColor(sf::Color::Green);
     // Crée un cercle
