@@ -5,25 +5,25 @@
 // ============================================================================|
 
 void Easy::goWood(Player &player, Wood &wood) {
-	// std::cout << "Go wood" << std::endl;
-	player.setGens(player.getGens() - wood.getDifficulty());
-	if (&player == &_p1) {
+	if (&player == &_p1 && player.getGens() >= wood.getDifficulty()) {
+		player.setGens(player.getGens() - wood.getDifficulty());
 		wood.setGensP1(wood.getGensP1() + wood.getDifficulty());
 	}
-	else if (&player == &_p2) {
+	else if (&player == &_p2 && player.getGens() >= wood.getDifficulty()) {
+		player.setGens(player.getGens() - wood.getDifficulty());
 		wood.setGensP2(wood.getGensP2() + wood.getDifficulty());
 	}
 }
 
 void Easy::backWood(Player &player, Wood &wood) {
-	// std::cout << "Back wood" << std::endl;
-	player.setGens(player.getGens() + wood.getDifficulty());
-	if (&player == &_p1) {
-		wood.setGensP1(wood.getGensP1() - wood.getDifficulty());
-	}
-	else if (&player == &_p2) {
-		wood.setGensP2(wood.getGensP2() - wood.getDifficulty());
-	}
+		if (&player == &_p1 && wood.getGensP1() > 0) {
+			player.setGens(player.getGens() + wood.getDifficulty());
+			wood.setGensP1(wood.getGensP1() - wood.getDifficulty());
+		}
+		else if (&player == &_p2 && wood.getGensP2() > 0) {
+			player.setGens(player.getGens() + wood.getDifficulty());
+			wood.setGensP2(wood.getGensP2() - wood.getDifficulty());
+		}
 }
 
 // ============================================================================|

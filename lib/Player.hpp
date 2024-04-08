@@ -18,13 +18,13 @@ class Player
 		Player();
 		~Player();
 
-		int	getGens() const;
-		const void setGens(const int gens);
+		int			getGens() const;
+		const void	setGens(const int gens);
 
-		int getItemQuantiy(const string item_name) const;
+		int	getItemQuantiy(const string item_name) const;
 
-		map<string, int> getBackPack();
-		const void setBackPack(const string, int quantity);
+		map<string, int>	getBackPack();
+		const void			setBackPack(const string, int quantity);
 		
 
 };

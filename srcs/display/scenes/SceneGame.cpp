@@ -33,7 +33,6 @@ void SceneGame::handleEvent(const sf::Event& event) {
 	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::P) {
 		_gameplay.backWood(_gameplay._p2, _gameplay._wood);
 	}
-
 }
 
 void SceneGame::onUpdate(float deltaTime) {
