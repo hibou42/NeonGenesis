@@ -10,6 +10,8 @@ SceneGame::SceneGame(SFMLManager* manager) : sfmlManager(manager), _gameplay(*ne
 	this->_circle = sf::CircleShape();
 	this->_rect = sf::RectangleShape();
 	this->_woodSprite = sf::Sprite();
+
+	this->_timeNow = std::chrono::system_clock::now();
 }
 
 SceneGame::~SceneGame() {
@@ -20,18 +22,18 @@ SceneGame::~SceneGame() {
 void SceneGame::handleEvent(const sf::Event& event) {
 	//event p1
 	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Q) {
-		_gameplay.goWood(_gameplay._p1, _gameplay._wood);
+		_gameplay.goWood(_gameplay.getP1(), _gameplay.getWood());
 	}
 	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::E) {
-		_gameplay.backWood(_gameplay._p1, _gameplay._wood);
+		_gameplay.backWood(_gameplay.getP1(), _gameplay.getWood());
 	}
 
 	//event p2
 	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::I) {
-		_gameplay.goWood(_gameplay._p2, _gameplay._wood);
+		_gameplay.goWood(_gameplay.getP2(), _gameplay.getWood());
 	}
 	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::P) {
-		_gameplay.backWood(_gameplay._p2, _gameplay._wood);
+		_gameplay.backWood(_gameplay.getP2(), _gameplay.getWood());
 	}
 }
 
@@ -78,28 +80,36 @@ void SceneGame::onDraw(sf::RenderWindow& window) {
 	this->_text.setPosition(20, 60);
 	window.draw(_text);
 
-	str = "nb gens p1 = " + std::to_string(_gameplay._p1.getGens());
+	str = "nb gens p1 = " + std::to_string(_gameplay.getP1().getGens());
 	this->_text.setCharacterSize(30);
 	this->_text.setString(str);
 	this->_text.setPosition(5, 500);
 	window.draw(_text);
 
-	str = "nb gens p2 = " + std::to_string(_gameplay._p2.getGens());
+	str = "nb gens p2 = " + std::to_string(_gameplay.getP2().getGens());
 	this->_text.setCharacterSize(30);
 	this->_text.setString(str);
 	this->_text.setPosition(500, 500);
 	window.draw(_text);
 
-	str = std::to_string(_gameplay._wood.getGensP1());
+	str = std::to_string(_gameplay.getWood().getGensP1());
 	this->_text.setCharacterSize(30);
 	this->_text.setString(str);
 	this->_text.setPosition(300, 400);
 	window.draw(_text);
 
-	str = std::to_string(_gameplay._wood.getGensP2());
+	str = std::to_string(_gameplay.getWood().getGensP2());
 	this->_text.setCharacterSize(30);
 	this->_text.setString(str);
 	this->_text.setPosition(475, 400);
+	window.draw(_text);
+
+	time_t tempsActuel = std::chrono::system_clock::to_time_t(_timeNow);
+	str = std::ctime(&tempsActuel);
+	this->_text.setFont(font_digital);
+	this->_text.setCharacterSize(20);
+	this->_text.setString(str);
+	this->_text.setPosition(5, 5);
 	window.draw(_text);
 
 	window.display();

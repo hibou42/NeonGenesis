@@ -3,6 +3,9 @@
 
 #include "SceneBase.hpp"
 #include "SFMLManager.hpp"
+#include <chrono>
+#include <map>
+#include <functional>
 
 #include "../gameplay/Easy.hpp"
 
@@ -10,6 +13,7 @@ class SceneGame : public SceneBase {
 	private:
 		SFMLManager* sfmlManager;
 		Easy &_gameplay;
+		std::chrono::system_clock::time_point _timeNow;
 
 		sf::Text			_text;
 		sf::CircleShape		_circle;

@@ -11,12 +11,10 @@
 #include "../material/Metal.hpp"
 
 using namespace std;
-class SceneGame;
+// class SceneGame;
 
 class Easy : public AGameplay
 {
-	friend class SceneGame;
-
 	private:
 		Player	&_p1;
 		Player	&_p2;
@@ -33,6 +31,12 @@ class Easy : public AGameplay
 	void goWood(Player &player, Wood &wood);
 	void backWood(Player &player, Wood &wood);
 
+	Player	&getP1();
+	Player	&getP2();
+	Wood	&getWood();
+	Water	&getWater();
+	Leather	&getLeather();
+	Metal	&getMetal();
 };
 
 #endif

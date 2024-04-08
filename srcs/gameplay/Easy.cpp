@@ -30,6 +30,29 @@ void Easy::backWood(Player &player, Wood &wood) {
 // Getters
 // ============================================================================|
 
+Player	&Easy::getP1() {
+	return _p1;
+}
+
+Player	&Easy::getP2() {
+	return _p2;
+}
+
+Wood	&Easy::getWood() {
+	return _wood;
+}
+
+Water	&Easy::getWater() {
+	return _water;
+}
+
+Leather	&Easy::getLeather() {
+	return _leather;
+}
+
+Metal	&Easy::getMetal() {
+	return _metal;
+}
 
 // ============================================================================|
 // Setters
