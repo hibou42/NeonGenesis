@@ -5,7 +5,7 @@
 // ============================================================================|
 
 void Easy::goWood(Player &player, Wood &wood) {
-	std::cout << "Go wood" << std::endl;
+	// std::cout << "Go wood" << std::endl;
 	player.setGens(player.getGens() - wood.getDifficulty());
 	if (&player == &_p1) {
 		wood.setGensP1(wood.getGensP1() + wood.getDifficulty());
@@ -16,7 +16,7 @@ void Easy::goWood(Player &player, Wood &wood) {
 }
 
 void Easy::backWood(Player &player, Wood &wood) {
-	std::cout << "Back wood" << std::endl;
+	// std::cout << "Back wood" << std::endl;
 	player.setGens(player.getGens() + wood.getDifficulty());
 	if (&player == &_p1) {
 		wood.setGensP1(wood.getGensP1() - wood.getDifficulty());

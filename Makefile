@@ -124,6 +124,8 @@ v:	 	${OBJS}
 		@$(END_COMP_TXT)
 		@tput setaf 2; cat ascii_art/small_hibou3; tput setaf default
 
+go:		all
+		./$(NAME)
 
 #***** Clean *****#
 
