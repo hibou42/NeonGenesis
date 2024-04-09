@@ -14,6 +14,8 @@
 
 Wood::Wood() {
 	this->_difficulty = this->_settings.woodDifficulty;
+	this->_cooldown = this->_settings.woodCooldown;
+
 	this->_type = "wood";
 	this->_gens_p1 = 0;
 	this->_gens_p2 = 0;

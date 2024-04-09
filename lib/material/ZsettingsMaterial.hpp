@@ -12,7 +12,9 @@ using json = nlohmann::json;
 
 class ZsettingsMaterial {
 public:
+	// add more here !!!
 	int	woodDifficulty;
+	std::chrono::seconds	woodCooldown;
 	int	last;
 
 	ZsettingsMaterial() {};
@@ -27,8 +29,10 @@ public:
 		json jason;
 		file >> jason;
 
+		// add more here !!!
 		ZsettingsMaterial settings;
 		settings.woodDifficulty = jason.value("woodDifficulty", 1);
+		settings.woodCooldown = std::chrono::seconds(jason.value("woodCooldown", 1));
 		settings.last = jason.value("last", 0);
 
 		return settings;

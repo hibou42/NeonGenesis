@@ -12,6 +12,10 @@ int		AMaterial::getDifficulty() const {
 	return (this->_difficulty);
 }
 
+chrono::seconds AMaterial::getCooldown() const {
+	return (this->_cooldown);
+}
+
 string	AMaterial::getType() const {
 	return (this->_type);
 }

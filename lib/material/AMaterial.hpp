@@ -11,9 +11,10 @@ class AMaterial
 private:
 
 protected :
-	ZsettingsMaterial _settings;
+	ZsettingsMaterial	_settings;
+	int					_difficulty;
+	chrono::seconds		_cooldown;
 
-	int		_difficulty;
 	string	_type;
 	int		_gens_p1;
 	int		_gens_p2;
@@ -25,18 +26,19 @@ public:
 	AMaterial();				// Constructeur
 	virtual ~AMaterial();		// Destructeur
 
-	int			getDifficulty() const;
-	string		getType() const;
-	int			getGensP1() const;
-	int			getGensP2() const;
-	string		getUpgradeType() const;
-	int			getUpgradeP1() const;
-	int			getUpgradeP2() const;
+	int				getDifficulty() const;
+	chrono::seconds	getCooldown() const;
+	string			getType() const;
+	int				getGensP1() const;
+	int				getGensP2() const;
+	string			getUpgradeType() const;
+	int				getUpgradeP1() const;
+	int				getUpgradeP2() const;
 
-	void		setGensP1(int i);
-	void		setGensP2(int i);
-	void		setUpgradeP1(int i);
-	void		setUpgradeP2(int i);
+	void			setGensP1(int i);
+	void			setGensP2(int i);
+	void			setUpgradeP1(int i);
+	void			setUpgradeP2(int i);
 };
 
 #endif

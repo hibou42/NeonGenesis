@@ -24,13 +24,13 @@ void SceneGame::handleEvent(const sf::Event& event) {
 	//event p1
 	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Q) {
 		if(_gameplay.goWood(_gameplay.getP1(), _gameplay.getWood()) == true)
-			_autoReturnMap.insert(std::make_pair(_timeNow + std::chrono::seconds(3),"p1backwood"));
+			_autoReturnMap.insert(std::make_pair(_timeNow + _gameplay.getWood().getCooldown(),"p1backwood"));
 	}
 
 	//event p2
 	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::P) {
 		if(_gameplay.goWood(_gameplay.getP2(), _gameplay.getWood()) == true)
-			_autoReturnMap.insert(std::make_pair(_timeNow + std::chrono::seconds(3),"p2backwood"));
+			_autoReturnMap.insert(std::make_pair(_timeNow + _gameplay.getWood().getCooldown(),"p2backwood"));
 	}
 }
 

@@ -20,7 +20,6 @@ int main() {
 
 	SFMLManager sceneManager;
 	sceneManager.pushScene(std::make_unique<SceneStart>(&sceneManager));
-
 	while (window.isOpen()) {
 		sf::Event event;
 		while (window.pollEvent(event)) {
