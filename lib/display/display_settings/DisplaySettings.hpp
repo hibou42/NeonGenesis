@@ -25,7 +25,7 @@ public:
 
 
 			DisplaySettings defaultSettings;
-            defaultSettings.saveSettingsToJson(filename);
+			defaultSettings.saveSettingsToJson(filename);
 			return defaultSettings;
 		}
 
@@ -40,7 +40,6 @@ public:
 
 		return settings;
 	}
-
 
 	void saveSettingsToJson(const std::string& filename) const {
 

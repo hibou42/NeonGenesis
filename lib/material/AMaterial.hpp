@@ -2,6 +2,7 @@
 # define AMATERIAL_HPP
 
 #include <string>
+#include "ZsettingsMaterial.hpp"
 
 using namespace std;
 
@@ -10,6 +11,8 @@ class AMaterial
 private:
 
 protected :
+	ZsettingsMaterial _settings;
+
 	int		_difficulty;
 	string	_type;
 	int		_gens_p1;

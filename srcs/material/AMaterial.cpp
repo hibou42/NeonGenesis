@@ -60,6 +60,8 @@ void AMaterial::setUpgradeP2(int i) {
 // Construction, destruction & overload
 // ============================================================================|
 
-AMaterial::AMaterial() {}
+AMaterial::AMaterial() {
+	_settings = ZsettingsMaterial::loadSettingsFromJson("json/material.json");
+}
 
 AMaterial::~AMaterial() {}

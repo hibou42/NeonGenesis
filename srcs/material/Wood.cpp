@@ -13,7 +13,7 @@
 // ============================================================================|
 
 Wood::Wood() {
-	this->_difficulty = 1;
+	this->_difficulty = this->_settings.woodDifficulty;
 	this->_type = "wood";
 	this->_gens_p1 = 0;
 	this->_gens_p2 = 0;
