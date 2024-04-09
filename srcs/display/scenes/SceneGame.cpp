@@ -12,6 +12,7 @@ SceneGame::SceneGame(SFMLManager* manager) : sfmlManager(manager), _gameplay(*ne
 	this->_woodSprite = sf::Sprite();
 
 	this->_timeNow = std::chrono::system_clock::now();
+	this->_timeNext = _timeNow + std::chrono::seconds(1);
 }
 
 SceneGame::~SceneGame() {
@@ -23,22 +24,40 @@ void SceneGame::handleEvent(const sf::Event& event) {
 	//event p1
 	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Q) {
 		_gameplay.goWood(_gameplay.getP1(), _gameplay.getWood());
-	}
-	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::E) {
-		_gameplay.backWood(_gameplay.getP1(), _gameplay.getWood());
+		_autoReturnMap.insert(std::make_pair(_timeNow + std::chrono::seconds(3),"p1backwood"));
 	}
 
 	//event p2
-	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::I) {
-		_gameplay.goWood(_gameplay.getP2(), _gameplay.getWood());
-	}
 	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::P) {
-		_gameplay.backWood(_gameplay.getP2(), _gameplay.getWood());
+		_gameplay.goWood(_gameplay.getP2(), _gameplay.getWood());
+		_autoReturnMap.insert(std::make_pair(_timeNow + std::chrono::seconds(3),"p2backwood"));
 	}
 }
 
 void SceneGame::onUpdate(float deltaTime) {
 	// Logique de mise à jour de la scène ici
+	this->_timeNow = std::chrono::system_clock::now();
+	if (this->_timeNext <= this->_timeNow) {
+		this->_timeNext = this->_timeNow + std::chrono::seconds(1);
+
+		for (auto node = _autoReturnMap.begin(); node != _autoReturnMap.end();) {
+			if (node->first < _timeNow) {
+				autoReturn(node->second);
+				node = _autoReturnMap.erase(node);
+			} else {
+				node++;
+			}
+		}
+	}
+}
+
+void SceneGame::autoReturn(std::string str) {
+	if (str == "p1backwood") {
+		_gameplay.backWood(_gameplay.getP1(), _gameplay.getWood());
+	}
+	else if (str == "p2backwood") {
+		_gameplay.backWood(_gameplay.getP2(), _gameplay.getWood());
+	}
 }
 
 void SceneGame::onDraw(sf::RenderWindow& window) {
@@ -74,10 +93,10 @@ void SceneGame::onDraw(sf::RenderWindow& window) {
 	this->_text.setPosition(325, 5);
 	window.draw(_text);
 
-	str = "Q = goWood, E = bkWood for P1 / I = goWood, P = bkWood for P2";
+	str = "Q = goWood for P1 / P = goWood for P2";
 	this->_text.setCharacterSize(20);
 	this->_text.setString(str);
-	this->_text.setPosition(20, 60);
+	this->_text.setPosition(175, 60);
 	window.draw(_text);
 
 	str = "nb gens p1 = " + std::to_string(_gameplay.getP1().getGens());

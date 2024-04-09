@@ -16,7 +16,7 @@ int main() {
 	// sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
 
 	sf::RenderWindow window(sf::VideoMode(settings.width, settings.height), "SFML Game", sf::Style::Default | sf::Style::None);
-	window.setFramerateLimit(60);
+	window.setFramerateLimit(120);
 
 	SFMLManager sceneManager;
 	sceneManager.pushScene(std::make_unique<SceneStart>(&sceneManager));

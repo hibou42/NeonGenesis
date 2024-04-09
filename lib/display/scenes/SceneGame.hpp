@@ -13,7 +13,10 @@ class SceneGame : public SceneBase {
 	private:
 		SFMLManager* sfmlManager;
 		Easy &_gameplay;
+		std::multimap<std::chrono::system_clock::time_point, std::string> _autoReturnMap;
+
 		std::chrono::system_clock::time_point _timeNow;
+		std::chrono::system_clock::time_point _timeNext;
 
 		sf::Text			_text;
 		sf::CircleShape		_circle;
@@ -27,6 +30,7 @@ class SceneGame : public SceneBase {
 		void handleEvent(const sf::Event& event) override;
 		void onUpdate(float deltaTime) override;
 		void onDraw(sf::RenderWindow& window) override;
+		void autoReturn(std::string str);
 
 };
 
