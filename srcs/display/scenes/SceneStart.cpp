@@ -17,8 +17,11 @@ SceneStart::~SceneStart() {
 }
 
 void SceneStart::handleEvent(const sf::Event& event) {
+	if (sf::Joystick::isConnected(0)) {
+		std::cout << "Joystick connected" << std::endl;
+	}
 
-	std::cout << event.key.code << std::endl;
+	// std::cout << event.key.code << std::endl;
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::E) {
 
 		std::cout << "E pressed" << std::endl;
