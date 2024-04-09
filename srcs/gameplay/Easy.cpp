@@ -4,15 +4,18 @@
 // Interaction fonctions
 // ============================================================================|
 
-void Easy::goWood(Player &player, Wood &wood) {
+bool Easy::goWood(Player &player, Wood &wood) {
 	if (&player == &_p1 && player.getGens() >= wood.getDifficulty()) {
 		player.setGens(player.getGens() - wood.getDifficulty());
 		wood.setGensP1(wood.getGensP1() + wood.getDifficulty());
+		return true;
 	}
 	else if (&player == &_p2 && player.getGens() >= wood.getDifficulty()) {
 		player.setGens(player.getGens() - wood.getDifficulty());
 		wood.setGensP2(wood.getGensP2() + wood.getDifficulty());
+		return true;
 	}
+	return false;
 }
 
 void Easy::backWood(Player &player, Wood &wood) {

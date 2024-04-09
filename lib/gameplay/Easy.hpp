@@ -28,7 +28,7 @@ class Easy : public AGameplay
 		Easy();
 		~Easy();
 
-	void goWood(Player &player, Wood &wood);
+	bool goWood(Player &player, Wood &wood);
 	void backWood(Player &player, Wood &wood);
 
 	Player	&getP1();

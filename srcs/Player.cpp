@@ -12,6 +12,7 @@ using namespace std;
 
 Player::Player() : _gens(10) {
 	this->_mapbackpack["food"] = 20;
+	this->_mapbackpack["wood"] = 0;
 	cout << "Constructor Player / food = " << this->_mapbackpack.at("food") << endl;
 }
 

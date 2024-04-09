@@ -23,14 +23,14 @@ SceneGame::~SceneGame() {
 void SceneGame::handleEvent(const sf::Event& event) {
 	//event p1
 	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Q) {
-		_gameplay.goWood(_gameplay.getP1(), _gameplay.getWood());
-		_autoReturnMap.insert(std::make_pair(_timeNow + std::chrono::seconds(3),"p1backwood"));
+		if(_gameplay.goWood(_gameplay.getP1(), _gameplay.getWood()) == true)
+			_autoReturnMap.insert(std::make_pair(_timeNow + std::chrono::seconds(3),"p1backwood"));
 	}
 
 	//event p2
 	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::P) {
-		_gameplay.goWood(_gameplay.getP2(), _gameplay.getWood());
-		_autoReturnMap.insert(std::make_pair(_timeNow + std::chrono::seconds(3),"p2backwood"));
+		if(_gameplay.goWood(_gameplay.getP2(), _gameplay.getWood()) == true)
+			_autoReturnMap.insert(std::make_pair(_timeNow + std::chrono::seconds(3),"p2backwood"));
 	}
 }
 
@@ -54,9 +54,11 @@ void SceneGame::onUpdate(float deltaTime) {
 void SceneGame::autoReturn(std::string str) {
 	if (str == "p1backwood") {
 		_gameplay.backWood(_gameplay.getP1(), _gameplay.getWood());
+		_gameplay.getP1().setBackPack("wood", _gameplay.getP1().getItemQuantiy("wood") + 1);
 	}
 	else if (str == "p2backwood") {
 		_gameplay.backWood(_gameplay.getP2(), _gameplay.getWood());
+		_gameplay.getP2().setBackPack("wood", _gameplay.getP2().getItemQuantiy("wood") + 1);
 	}
 }
 
@@ -97,6 +99,18 @@ void SceneGame::onDraw(sf::RenderWindow& window) {
 	this->_text.setCharacterSize(20);
 	this->_text.setString(str);
 	this->_text.setPosition(175, 60);
+	window.draw(_text);
+
+	str = "bp wood = " + std::to_string(_gameplay.getP1().getItemQuantiy("wood"));
+	this->_text.setCharacterSize(30);
+	this->_text.setString(str);
+	this->_text.setPosition(5, 470);
+	window.draw(_text);
+
+	str = "bp wood = " + std::to_string(_gameplay.getP2().getItemQuantiy("wood"));
+	this->_text.setCharacterSize(30);
+	this->_text.setString(str);
+	this->_text.setPosition(500, 470);
 	window.draw(_text);
 
 	str = "nb gens p1 = " + std::to_string(_gameplay.getP1().getGens());
