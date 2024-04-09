@@ -31,7 +31,7 @@ int main() {
 		}
 
 		sceneManager.handleEvent(event);
-		sceneManager.onUpdate(0.016f); // deltaTime fixe pour 60 FPS
+		sceneManager.onUpdate(0.016f); 
 		window.clear();
 		sceneManager.onDraw(window);
 		window.display();
