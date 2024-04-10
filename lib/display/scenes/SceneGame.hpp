@@ -18,11 +18,18 @@ class SceneGame : public SceneBase {
 		std::chrono::system_clock::time_point	_timeNow;
 		std::chrono::system_clock::time_point	_timeNext;
 
+		sf::Font _font_digital;
+		sf::Font _font_lemon;
+
 		sf::Text			_text;
 		sf::Sprite			_woodSprite;
+		sf::Texture			_woodTexture;
 		sf::Sprite			_waterSprite;
+		sf::Texture			_waterTexture;
 		sf::Sprite			_leatherSprite;
+		sf::Texture			_leatherTexture;
 		sf::Sprite			_metalSprite;
+		sf::Texture			_metalTexture;
 
 	public:
 		SceneGame();

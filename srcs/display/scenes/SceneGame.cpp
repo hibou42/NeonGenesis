@@ -6,14 +6,49 @@ SceneGame::SceneGame() : sfmlManager(nullptr), _gameplay(*new Easy()) {}
 
 SceneGame::SceneGame(SFMLManager* manager) : sfmlManager(manager), _gameplay(*new Easy()) {
 	// Initialisation des formes et du texte ici
-	this->_text = sf::Text();
-	this->_woodSprite = sf::Sprite();
-	this->_waterSprite = sf::Sprite();
-	this->_leatherSprite = sf::Sprite();
-	this->_metalSprite = sf::Sprite();
-
 	this->_timeNow = std::chrono::system_clock::now();
 	this->_timeNext = _timeNow + std::chrono::seconds(1);
+
+	this->_text = sf::Text();
+	this->_font_lemon = sf::Font();
+	if (!_font_lemon.loadFromFile("font/LEMONMILK-Light.otf"))
+		std::cout << "Error loading font!" << std::endl;
+	this->_font_digital = sf::Font();
+	if (!_font_digital.loadFromFile("font/digital-7.ttf"))
+		std::cout << "Error loading font!" << std::endl;
+
+	this->_woodSprite = sf::Sprite();
+	this->_woodTexture = sf::Texture();
+	if (!_woodTexture.loadFromFile("sprite/tree.png"))
+		std::cout << "Error loading image!" << std::endl;
+	this->_woodSprite.setTexture(_woodTexture);
+	this->_woodSprite.setPosition(100,275);
+	this->_woodSprite.setScale(0.4f, 0.4f);
+
+	this->_waterSprite = sf::Sprite();
+	this->_waterTexture = sf::Texture();
+	if (!_waterTexture.loadFromFile("sprite/water.png"))
+		std::cout << "Error loading image!" << std::endl;
+	this->_waterSprite.setTexture(_waterTexture);
+	this->_waterSprite.setPosition(450, 275);
+	this->_waterSprite.setScale(0.4f, 0.4f);
+	
+	this->_leatherSprite = sf::Sprite();
+	this->_leatherTexture = sf::Texture();
+	if (!_leatherTexture.loadFromFile("sprite/leather.png"))
+		std::cout << "Error loading image!" << std::endl;
+	this->_leatherSprite.setTexture(_leatherTexture);
+	this->_leatherSprite.setPosition(100, 100);
+	this->_leatherSprite.setScale(0.4f, 0.4f);
+
+	this->_metalSprite = sf::Sprite();
+	this->_metalTexture = sf::Texture();
+	if (!_metalTexture.loadFromFile("sprite/metal.png"))
+		std::cout << "Error loading image!" << std::endl;
+	this->_metalSprite.setTexture(_metalTexture);
+	this->_metalSprite.setPosition(450,100);
+	this->_metalSprite.setScale(0.4f, 0.4f);
+
 }
 
 SceneGame::~SceneGame() {
@@ -114,47 +149,12 @@ void SceneGame::autoReturn(std::string str) {
 void SceneGame::onDraw(sf::RenderWindow& window) {
 	window.clear();
 
-	sf::Texture texture;
-	if (!texture.loadFromFile("sprite/tree.png"))
-		std::cout << "Error loading image!" << std::endl;
-	this->_woodSprite.setTexture(texture);
-	this->_woodSprite.setPosition(100,275);
-	this->_woodSprite.setScale(0.4f, 0.4f);
 	window.draw(_woodSprite);
-
-	if (!texture.loadFromFile("sprite/water.png"))
-		std::cout << "Error loading image!" << std::endl;
-	this->_waterSprite.setTexture(texture);
-	this->_waterSprite.setPosition(450, 275);
-	this->_waterSprite.setScale(0.4f, 0.4f);
 	window.draw(_waterSprite);
-
-	if (!texture.loadFromFile("sprite/leather.png"))
-		std::cout << "Error loading image!" << std::endl;
-	this->_leatherSprite.setTexture(texture);
-	this->_leatherSprite.setPosition(100, 100);
-	this->_leatherSprite.setScale(0.4f, 0.4f);
 	window.draw(_leatherSprite);
-
-	if (!texture.loadFromFile("sprite/metal.png"))
-		std::cout << "Error loading image!" << std::endl;
-	this->_metalSprite.setTexture(texture);
-	this->_metalSprite.setPosition(450,100);
-	this->_metalSprite.setScale(0.4f, 0.4f);
 	window.draw(_metalSprite);
 
-	sf::Font font_digital;
-	if (!font_digital.loadFromFile("font/digital-7.ttf")) {
-		std::cout << "Error loading font!" << std::endl;
-		return;
-	}
-
-	sf::Font font_lemon;
-	if (!font_lemon.loadFromFile("font/LEMONMILK-Light.otf")) {
-		std::cout << "Error loading font!" << std::endl;
-		return;
-	}
-	this->_text.setFont(font_lemon);
+	this->_text.setFont(_font_lemon);
 	this->_text.setFillColor(sf::Color::White);
 
 	std::string str = "TEST GAME";
@@ -279,7 +279,7 @@ void SceneGame::onDraw(sf::RenderWindow& window) {
 
 	time_t tempsActuel = std::chrono::system_clock::to_time_t(_timeNow);
 	str = std::ctime(&tempsActuel);
-	this->_text.setFont(font_digital);
+	this->_text.setFont(_font_digital);
 	this->_text.setCharacterSize(20);
 	this->_text.setString(str);
 	this->_text.setPosition(5, 5);
