@@ -13,7 +13,9 @@
 // ============================================================================|
 
 Leather::Leather() {
-	this->_difficulty = 4;
+	this->_difficulty = this->_settings.leatherDifficulty;
+	this->_cooldown = this->_settings.leatherCooldown;
+
 	this->_type = "Leather";
 	this->_gens_p1 = 0;
 	this->_gens_p2 = 0;

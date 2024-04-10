@@ -30,6 +30,12 @@ class Easy : public AGameplay
 
 	bool goWood(Player &player, Wood &wood);
 	void backWood(Player &player, Wood &wood);
+	bool goWater(Player &player, Water &water);
+	void backWater(Player &player, Water &water);
+	bool goLeather(Player &player, Leather &leather);
+	void backLeather(Player &player,Leather &leather);
+	bool goMetal(Player &player, Metal &metal);
+	void backMetal(Player &player, Metal &metal);
 
 	Player	&getP1();
 	Player	&getP2();

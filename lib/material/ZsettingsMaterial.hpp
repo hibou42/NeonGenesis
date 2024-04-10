@@ -15,6 +15,12 @@ public:
 	// add more here !!!
 	int	woodDifficulty;
 	std::chrono::seconds	woodCooldown;
+	int	waterDifficulty;
+	std::chrono::seconds	waterCooldown;
+	int	leatherDifficulty;
+	std::chrono::seconds	leatherCooldown;
+	int	metalDifficulty;
+	std::chrono::seconds	metalCooldown;
 	int	last;
 
 	ZsettingsMaterial() {};
@@ -33,6 +39,12 @@ public:
 		ZsettingsMaterial settings;
 		settings.woodDifficulty = jason.value("woodDifficulty", 1);
 		settings.woodCooldown = std::chrono::seconds(jason.value("woodCooldown", 1));
+		settings.waterDifficulty = jason.value("waterDifficulty", 1);
+		settings.waterCooldown = std::chrono::seconds(jason.value("waterCooldown", 1));
+		settings.leatherDifficulty = jason.value("leatherDifficulty", 1);
+		settings.leatherCooldown = std::chrono::seconds(jason.value("leatherCooldown", 1));
+		settings.metalDifficulty = jason.value("metalDifficulty", 1);
+		settings.metalCooldown = std::chrono::seconds(jason.value("metalCooldown", 1));
 		settings.last = jason.value("last", 0);
 
 		return settings;

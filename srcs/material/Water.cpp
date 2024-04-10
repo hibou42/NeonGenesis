@@ -13,7 +13,9 @@
 // ============================================================================|
 
 Water::Water() {
-	this->_difficulty = 2;
+	this->_difficulty = this->_settings.waterDifficulty;
+	this->_cooldown = this->_settings.waterCooldown;
+
 	this->_type = "water";
 	this->_gens_p1 = 0;
 	this->_gens_p2 = 0;

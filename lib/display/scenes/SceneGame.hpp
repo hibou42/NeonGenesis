@@ -15,13 +15,14 @@ class SceneGame : public SceneBase {
 		Easy &_gameplay;
 		std::multimap<std::chrono::system_clock::time_point, std::string> _autoReturnMap;
 
-		std::chrono::system_clock::time_point _timeNow;
-		std::chrono::system_clock::time_point _timeNext;
+		std::chrono::system_clock::time_point	_timeNow;
+		std::chrono::system_clock::time_point	_timeNext;
 
 		sf::Text			_text;
-		sf::CircleShape		_circle;
-		sf::RectangleShape	_rect;
 		sf::Sprite			_woodSprite;
+		sf::Sprite			_waterSprite;
+		sf::Sprite			_leatherSprite;
+		sf::Sprite			_metalSprite;
 
 	public:
 		SceneGame();
