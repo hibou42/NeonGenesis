@@ -1,0 +1,42 @@
+{
+	"linux": {
+		"p1": {
+			"left" : "a",
+			"right" : "d",
+			"up" : "w",
+			"down" : "s",
+			"select" : "space",
+			"start" : "enter",
+			"back" : "escape"
+		},
+		"p2": {
+			"left" : "left",
+			"right" : "right",
+			"up" : "up",
+			"down" : "down",
+			"select" : "space",
+			"start" : "enter",
+			"back" : "escape"
+			
+		}
+	},
+	"windows": {
+		"p1": {
+
+			
+		},
+		"p2": {
+			
+		}
+	},
+	"gamepad": {
+		"p1": {
+			
+			
+		},
+		"p2": {
+			
+		}
+	}
+
+}

@@ -43,10 +43,10 @@ void SceneMenu::onDraw(sf::RenderWindow& window) {
         return;
     }
 
-    std::string str = "Scene Menu";
+    // std::string str = "Scene Menuuu";
 
     this->_text.setFont(font);
-    this->_text.setString(str);
+    // this->_text.setString(str);
     this->_text.setCharacterSize(50);
     this->_text.setPosition(100, 100);
     this->_text.setFillColor(sf::Color::Red);

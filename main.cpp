@@ -15,6 +15,11 @@ int main() {
 	std::cout << "Borderless: " << std::boolalpha << settings.borderless << std::endl;
 	// sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
 
+	sf::Joystick::Identification id = sf::Joystick::getIdentification(0);
+    std::cout << "\nVendor ID: " << id.vendorId << "\nProduct ID: " << id.productId << std::endl;
+    sf::String controller("Joystick Use: " + id.name);
+	std::cout << "Controller: " << controller.toAnsiString() << std::endl;
+
 	sf::RenderWindow window(sf::VideoMode(settings.width, settings.height), "SFML Game", sf::Style::Default | sf::Style::None);
 	window.setFramerateLimit(120);
 
@@ -30,7 +35,7 @@ int main() {
 		}
 
 		sceneManager.handleEvent(event);
-		sceneManager.onUpdate(0.016f); // deltaTime fixe pour 60 FPS
+		sceneManager.onUpdate(0.016f); 
 		window.clear();
 		sceneManager.onDraw(window);
 		window.display();

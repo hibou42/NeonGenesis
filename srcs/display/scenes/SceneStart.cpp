@@ -6,8 +6,7 @@ SceneStart::SceneStart() : sfmlManager(nullptr){}
 
 SceneStart::SceneStart(SFMLManager* manager) : sfmlManager(manager){
 
-    // this->_text = sf::Text();
-	// this->_text.setFont(ResourceManager::getFont());
+	this->_text = sf::Text("Push E", ResourceManager::getFont(), 50);
     this->_circle = sf::CircleShape(50);
     this->_rect = sf::RectangleShape(sf::Vector2f(100, 100));
 }
@@ -18,6 +17,11 @@ SceneStart::~SceneStart() {
 }
 
 void SceneStart::handleEvent(const sf::Event& event) {
+	if (sf::Joystick::isConnected(0)) {
+		std::cout << "Joystick connected" << std::endl;
+	}
+
+	// std::cout << event.key.code << std::endl;
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::E) {
 
 		std::cout << "E pressed" << std::endl;
@@ -32,35 +36,22 @@ void SceneStart::handleEvent(const sf::Event& event) {
 }
 
 void SceneStart::onUpdate(float deltaTime) {
+
     // Logique de mise à jour de la scène ici
 	// std::cout << "deltaTime 0 : " << deltaTime << std::endl;
 }
 
 void SceneStart::onDraw(sf::RenderWindow& window) {
-    // window.clear();
+    window.clear();
 
-
-
-    // std::string str = "Scene Start";
-
-    // this->_text.setString(str);
+	
+	// this->_text.setFont(ResourceManager::getFont());
+	// this->_text.setString("Push E");
     // this->_text.setCharacterSize(50);
-    // this->_text.setPosition(100, 100);
-    // this->_text.setFillColor(sf::Color::Red);
+    this->_text.setPosition(window.getSize().x / 2 - this->_text.getGlobalBounds().width / 2, window.getSize().y / 2);
+    this->_text.setFillColor(sf::Color::Red);
 
-    // Crée un cercle
-    this->_circle.setFillColor(sf::Color::Green);
-    this->_circle.setPosition(200, 200);
-    this->_circle.setRadius(50);
+	window.draw(_text);
+	window.display();
 
-    // // Crée un rectangle
-    this->_rect.setFillColor(sf::Color::Blue);
-    this->_rect.setPosition(400, 300);
-    this->_rect.setSize(sf::Vector2f(100, 100));
-
-    // // Dessiner les formes et le texte ici
-    window.draw(this->_circle);
-    window.draw(this->_rect);
-    // window.draw(this->_text);
-    // window.display();
 }
